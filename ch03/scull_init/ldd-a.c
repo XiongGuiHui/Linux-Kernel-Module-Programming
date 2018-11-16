@@ -71,10 +71,6 @@ int scull_trim(struct scull_dev *dev) {
 	return 0;
 }
 
-
-
-
-
 void scull_cleanup_module(void){
 	int i;
 	dev_t devno = MKDEV(scull_major, scull_minor);

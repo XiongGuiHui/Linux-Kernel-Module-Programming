@@ -3,7 +3,7 @@
         "arguments": [
             "gcc",
             "-c",
-            "-Wp,-MD,/home/shen/Core/ldd/ch01/.hello-1.mod.o.d",
+            "-Wp,-MD,/home/shen/Core/ldd/ch03/scull_method/.scull.mod.o.d",
             "-nostdinc",
             "-isystem",
             "/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include",
@@ -91,21 +91,23 @@
             "-Werror=date-time",
             "-Werror=incompatible-pointer-types",
             "-Werror=designated-init",
-            "-DKBUILD_BASENAME=\"hello_1.mod\"",
-            "-DKBUILD_MODNAME=\"hello_1\"",
+            "-O2",
+            "-I/home/shen/Core/ldd/ch03/scull_method",
+            "-DKBUILD_BASENAME=\"scull.mod\"",
+            "-DKBUILD_MODNAME=\"scull\"",
             "-DMODULE",
             "-o",
-            "/home/shen/Core/ldd/ch01/hello-1.mod.o",
-            "../../../../../home/shen/Core/ldd/ch01/hello-1.mod.c"
+            "/home/shen/Core/ldd/ch03/scull_method/scull.mod.o",
+            "../../../../../home/shen/Core/ldd/ch03/scull_method/scull.mod.c"
         ],
         "directory": "/usr/lib/modules/4.14.80-1-MANJARO/build",
-        "file": "../../../../../home/shen/Core/ldd/ch01/hello-1.mod.c"
+        "file": "../../../../../home/shen/Core/ldd/ch03/scull_method/scull.mod.c"
     },
     {
         "arguments": [
             "gcc",
             "-c",
-            "-Wp,-MD,/home/shen/Core/ldd/ch01/.hello-1.o.d",
+            "-Wp,-MD,/home/shen/Core/ldd/ch03/scull_method/.main.o.d",
             "-nostdinc",
             "-isystem",
             "/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include",
@@ -193,14 +195,16 @@
             "-Werror=date-time",
             "-Werror=incompatible-pointer-types",
             "-Werror=designated-init",
+            "-O2",
+            "-I/home/shen/Core/ldd/ch03/scull_method",
             "-DMODULE",
-            "-DKBUILD_BASENAME=\"hello_1\"",
-            "-DKBUILD_MODNAME=\"hello_1\"",
+            "-DKBUILD_BASENAME=\"main\"",
+            "-DKBUILD_MODNAME=\"scull\"",
             "-o",
-            "/home/shen/Core/ldd/ch01/.tmp_hello-1.o",
-            "../../../../../home/shen/Core/ldd/ch01/hello-1.c"
+            "/home/shen/Core/ldd/ch03/scull_method/.tmp_main.o",
+            "../../../../../home/shen/Core/ldd/ch03/scull_method/main.c"
         ],
         "directory": "/usr/lib/modules/4.14.80-1-MANJARO/build",
-        "file": "../../../../../home/shen/Core/ldd/ch01/hello-1.c"
+        "file": "../../../../../home/shen/Core/ldd/ch03/scull_method/main.c"
     }
 ]

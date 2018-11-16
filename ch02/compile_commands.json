@@ -3,7 +3,7 @@
         "arguments": [
             "gcc",
             "-c",
-            "-Wp,-MD,/home/shen/Core/ldd/ch01/.hello-1.mod.o.d",
+            "-Wp,-MD,/home/shen/Core/ldd/ch02/.hello-2.mod.o.d",
             "-nostdinc",
             "-isystem",
             "/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include",
@@ -91,21 +91,21 @@
             "-Werror=date-time",
             "-Werror=incompatible-pointer-types",
             "-Werror=designated-init",
-            "-DKBUILD_BASENAME=\"hello_1.mod\"",
-            "-DKBUILD_MODNAME=\"hello_1\"",
+            "-DKBUILD_BASENAME=\"hello_2.mod\"",
+            "-DKBUILD_MODNAME=\"hello_2\"",
             "-DMODULE",
             "-o",
-            "/home/shen/Core/ldd/ch01/hello-1.mod.o",
-            "../../../../../home/shen/Core/ldd/ch01/hello-1.mod.c"
+            "/home/shen/Core/ldd/ch02/hello-2.mod.o",
+            "../../../../../home/shen/Core/ldd/ch02/hello-2.mod.c"
         ],
         "directory": "/usr/lib/modules/4.14.80-1-MANJARO/build",
-        "file": "../../../../../home/shen/Core/ldd/ch01/hello-1.mod.c"
+        "file": "../../../../../home/shen/Core/ldd/ch02/hello-2.mod.c"
     },
     {
         "arguments": [
             "gcc",
             "-c",
-            "-Wp,-MD,/home/shen/Core/ldd/ch01/.hello-1.o.d",
+            "-Wp,-MD,/home/shen/Core/ldd/ch02/.hello-2.o.d",
             "-nostdinc",
             "-isystem",
             "/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include",
@@ -194,13 +194,13 @@
             "-Werror=incompatible-pointer-types",
             "-Werror=designated-init",
             "-DMODULE",
-            "-DKBUILD_BASENAME=\"hello_1\"",
-            "-DKBUILD_MODNAME=\"hello_1\"",
+            "-DKBUILD_BASENAME=\"hello_2\"",
+            "-DKBUILD_MODNAME=\"hello_2\"",
             "-o",
-            "/home/shen/Core/ldd/ch01/.tmp_hello-1.o",
-            "../../../../../home/shen/Core/ldd/ch01/hello-1.c"
+            "/home/shen/Core/ldd/ch02/.tmp_hello-2.o",
+            "../../../../../home/shen/Core/ldd/ch02/hello-2.c"
         ],
         "directory": "/usr/lib/modules/4.14.80-1-MANJARO/build",
-        "file": "../../../../../home/shen/Core/ldd/ch01/hello-1.c"
+        "file": "../../../../../home/shen/Core/ldd/ch02/hello-2.c"
     }
 ]

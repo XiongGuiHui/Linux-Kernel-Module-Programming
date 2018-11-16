@@ -1,4 +1,3 @@
-
 /*
  *  hello-5.c - Demonstrates command line argument passing to a module.
  */
@@ -9,7 +8,9 @@
 #include <linux/stat.h>
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Peter Jay Salzman");
+MODULE_AUTHOR("Bachelar Hu");
+MODULE_DESCRIPTION("A simple Linux driver for the BBB.");
+MODULE_VERSION("0.1");
 
 static short int myshort = 1;
 static int myint = 420;
@@ -25,7 +26,6 @@ static int arr_argc = 0;
  * The final argument is the permissions bits, 
  * for exposing parameters in sysfs (if non-zero) at a later stage.
  */
-
 module_param(myshort, short, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP);
 MODULE_PARM_DESC(myshort, "A short integer");
 module_param(myint, int, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
@@ -46,24 +46,30 @@ MODULE_PARM_DESC(mystring, "A character string");
 module_param_array(myintArray, int, &arr_argc, 0000);
 MODULE_PARM_DESC(myintArray, "An array of integers");
 
+/*
+ * __init and __exit macro
+ * The __init macro causes the init function to be discarded and its memory 
+ * freed once the init function finishes for built-in drivers, but not loadable modules
+ * https://www.tldp.org/LDP/lkmpg/2.4/html/x281.htm
+ */
 static int __init hello_5_init(void)
 {
-	int i;
-	printk(KERN_INFO "Hello, world 5\n=============\n");
-	printk(KERN_INFO "myshort is a short integer: %hd\n", myshort);
-	printk(KERN_INFO "myint is an integer: %d\n", myint);
-	printk(KERN_INFO "mylong is a long integer: %ld\n", mylong);
-	printk(KERN_INFO "mystring is a string: %s\n", mystring);
-	for (i = 0; i < (sizeof myintArray / sizeof (int)); i++)
-	{
-		printk(KERN_INFO "myintArray[%d] = %d\n", i, myintArray[i]);
-	}
-	printk(KERN_INFO "got %d arguments for myintArray.\n", arr_argc);
+
+    int i;
+    printk(KERN_INFO "Hello, world 5\n=============\n");
+    printk(KERN_INFO "myshort is a short integer: %hd\n", myshort);
+    printk(KERN_INFO "myint is an integer: %d\n", myint);
+    printk(KERN_INFO "mylong is a long integer: %ld\n", mylong);
+    printk(KERN_INFO "mystring is a string: %s\n", mystring);
+    for (i = 0; i < (sizeof myintArray / sizeof (int)); i++)
+    {
+        printk(KERN_INFO "myintArray[%d] = %d\n", i, myintArray[i]);
+    }
+    printk(KERN_INFO "got %d arguments for myintArray.\n", arr_argc);
 	return 0;
 }
 
-static void __exit hello_5_exit(void)
-{
+static void __exit hello_5_exit(void){
 	printk(KERN_INFO "Goodbye, world 5\n");
 }
 
