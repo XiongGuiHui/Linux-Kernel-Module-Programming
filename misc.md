@@ -10,8 +10,6 @@ tags: kernel
 [The zen of kobjects](https://lwn.net/Articles/51437/)
 
 
-# 内核几条命令
-insmod
-mknod
+setuid
 
-# 
+https://www.computerhope.com/jargon/s/setuid.htm

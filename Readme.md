@@ -2,6 +2,9 @@
 [Source code ref](https://github.com/duxing2007/ldd3-examples-3.x)
 
 
+### plans
+Using `scull`, we can write code in kernel instead of read the code.
+
 
 ### FAQ
 1. 

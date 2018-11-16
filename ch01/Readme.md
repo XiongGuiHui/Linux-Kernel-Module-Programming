@@ -5,3 +5,4 @@ This chapter describe some basic conception of linux kernel.
 
 ## Set up enviroment(vim)
 As an addition, I want to show to how to set the vim enviroment for linux device driver development.
+

@@ -1,19 +1,30 @@
 /*
  * scull.h -- definitions for the char module
+ *
+ * Copyright (C) 2001 Alessandro Rubini and Jonathan Corbet
+ * Copyright (C) 2001 O'Reilly & Associates
+ *
+ * The source code in this file can be freely used, adapted,
+ * and redistributed in source or binary form, so long as an
+ * acknowledgment appears in derived source files.  The citation
+ * should list that the code comes from the book "Linux Device
+ * Drivers" by Alessandro Rubini and Jonathan Corbet, published
+ * by O'Reilly & Associates.   No warranty is attached;
+ * we cannot take responsibility for errors or fitness for use.
+ *
+ * $Id: scull.h,v 1.15 2004/11/04 17:51:18 rubini Exp $
  */
 
 #ifndef _SCULL_H_
 #define _SCULL_H_
 
-/**
- * TODO: header is not enough at all
- */
 #include <linux/ioctl.h> /* needed for the _IOW etc stuff used later */
+/* This header is added by me. If not, ycm will report many errors, but it has no effect on compile and run. */
+#include <linux/cdev.h>
 
 /*
  * Macros to help debugging
  */
-
 #undef PDEBUG             /* undef it, just in case */
 #ifdef SCULL_DEBUG
 #  ifdef __KERNEL__
@@ -68,9 +79,6 @@
 
 /*
  * Representation of scull quantum sets.
- * emmmmmmmmm 为什么不是用kernel中间的数据结构的啊
- *
- * quantum 的设置为4000 和　1000 就是　指的是 int 的大小为4 吗 ?
  */
 struct scull_qset {
 	void **data;
@@ -81,11 +89,9 @@ struct scull_dev {
 	struct scull_qset *data;  /* Pointer to first quantum set */
 	int quantum;              /* the current quantum size */
 	int qset;                 /* the current array size */
-
 	unsigned long size;       /* amount of data stored here */
 	unsigned int access_key;  /* used by sculluid and scullpriv */
-
-	struct mutex mutex;     /* mutual exclusion semaphore     */
+	struct semaphore sem;     /* mutual exclusion semaphore     */
 	struct cdev cdev;	  /* Char device structure		*/
 };
 
@@ -103,30 +109,31 @@ extern int scull_major;     /* main.c */
 extern int scull_nr_devs;
 extern int scull_quantum;
 extern int scull_qset;
-
 extern int scull_p_buffer;	/* pipe.c */
 
 
 /*
  * Prototypes for shared functions
  */
+
 int     scull_p_init(dev_t dev);
 void    scull_p_cleanup(void);
 int     scull_access_init(dev_t dev);
 void    scull_access_cleanup(void);
 
 int     scull_trim(struct scull_dev *dev);
-
 ssize_t scull_read(struct file *filp, char __user *buf, size_t count,
                    loff_t *f_pos);
 ssize_t scull_write(struct file *filp, const char __user *buf, size_t count,
                     loff_t *f_pos);
 loff_t  scull_llseek(struct file *filp, loff_t off, int whence);
-long     scull_ioctl(struct file *filp,
-                    unsigned int cmd, unsigned long arg);
+long     scull_ioctl(struct file *filp, unsigned int cmd, unsigned long arg);
+
+
 /*
  * Ioctl definitions
  */
+
 /* Use 'k' as magic number */
 #define SCULL_IOC_MAGIC  'k'
 /* Please use a different 8-bit number in your code */
