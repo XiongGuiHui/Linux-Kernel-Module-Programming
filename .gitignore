@@ -1,3 +1,9 @@
+# vim
+GPATH
+GRTAGS
+GTAGS
+compile_commands.json
+
 # Prerequisites
 *.d
 
